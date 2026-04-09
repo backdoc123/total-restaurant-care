@@ -78,7 +78,7 @@ export default function WhyTRC() {
   }
 
   return (
-    <section className="w-full bg-black text-white relative" style={{ minHeight: '100vh' }}>
+    <section className="w-full bg-black text-white relative">
       {/* Elegant background elements - matching hero */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradient orbs - smooth, elegant floating */}
@@ -104,7 +104,7 @@ export default function WhyTRC() {
       </div>
 
       {/* ALL CONTENT IN ONE BLACK SECTION */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full pb-32">
         {/* Header section */}
         <div className="py-24 w-full">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
@@ -168,8 +168,8 @@ export default function WhyTRC() {
           </div>
         </div>
 
-        {/* Credentials section - STILL BLACK with explicit bg */}
-        <div className="py-24 w-full bg-black">
+        {/* Credentials section - STILL BLACK */}
+        <div className="py-24 w-full">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
