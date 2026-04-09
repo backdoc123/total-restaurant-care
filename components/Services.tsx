@@ -55,7 +55,7 @@ export default function Services() {
   }
 
   return (
-    <section className="py-40 bg-white relative overflow-hidden">
+    <section className="py-40 bg-black relative overflow-hidden">
       {/* Subtle background */}
       <div className="absolute inset-0 opacity-40" style={{
         backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(245, 158, 11, .02) 0%, transparent 50%)'
@@ -70,11 +70,11 @@ export default function Services() {
           viewport={{ once: true }}
           className="mb-24 max-w-3xl"
         >
-          <p className="text-copper-600 font-sans text-sm uppercase tracking-widest font-bold mb-4">Our Services</p>
-          <h2 className="text-5xl sm:text-6xl font-sans font-black text-navy-900 mb-8 leading-tight">
+          <p className="text-copper-500 font-sans text-sm uppercase tracking-widest font-bold mb-4">Our Services</p>
+          <h2 className="text-5xl sm:text-6xl font-sans font-black text-white mb-8 leading-tight">
             Complete Kitchen Cleaning Solutions
           </h2>
-          <p className="text-xl text-navy-700 font-light leading-relaxed">
+          <p className="text-xl text-gray-300 font-light leading-relaxed">
             From conveyor ovens to exhaust systems, we provide comprehensive cleaning services that prioritize safety, compliance, and operational efficiency.
           </p>
         </motion.div>
@@ -91,22 +91,19 @@ export default function Services() {
             <motion.div
               key={index}
               variants={cardVariants}
-              whileHover={{
-                y: -12,
-                transition: { duration: 0.3 }
-              }}
-              className="group p-8 bg-white border-2 border-navy-100 rounded-xl hover:border-copper-600 hover:border-opacity-60 hover:bg-gradient-to-br hover:from-white hover:to-orange-50 hover:shadow-2xl hover:shadow-copper-600/15 transition-all duration-300"
+              whileHover={{ y: -12, transition: { duration: 0.3 } }}
+              className="group p-8 bg-black border-2 border-copper-600 border-opacity-40 rounded-xl hover:border-copper-500 hover:border-opacity-80 hover:bg-black hover:shadow-2xl hover:shadow-copper-600/20 transition-all duration-300"
             >
               {/* Title with accent line */}
               <div className="mb-6">
-                <h3 className="text-2xl font-sans font-bold text-navy-900 group-hover:text-copper-600 transition-colors duration-300">
+                <h3 className="text-2xl font-sans font-bold text-white group-hover:text-copper-400 transition-colors duration-300">
                   {service.title}
                 </h3>
                 <div className="w-0 group-hover:w-16 h-1.5 bg-gradient-to-r from-copper-600 to-copper-400 transition-all duration-300 mt-4" />
               </div>
 
               {/* Description */}
-              <p className="text-navy-700 font-light leading-relaxed text-lg">
+              <p className="text-gray-300 font-light leading-relaxed text-lg">
                 {service.description}
               </p>
             </motion.div>

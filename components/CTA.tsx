@@ -28,7 +28,7 @@ export default function CTA() {
   }
 
   return (
-    <section className="py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden -mt-16">
+    <section className="py-32 bg-black relative overflow-hidden">
       {/* Background accent */}
       <div className="absolute inset-0 opacity-40" style={{
         backgroundImage: 'radial-gradient(circle at 80% 20%, rgba(245, 158, 11, .03) 0%, transparent 50%)'
@@ -52,7 +52,7 @@ export default function CTA() {
           {/* Headline */}
           <motion.h2
             variants={itemVariants}
-            className="text-5xl sm:text-6xl font-sans font-black text-navy-900 mb-8 leading-tight"
+            className="text-5xl sm:text-6xl font-sans font-black text-white mb-8 leading-tight"
           >
             Ready to Protect Your Kitchen?
           </motion.h2>
@@ -60,7 +60,7 @@ export default function CTA() {
           {/* Subheading */}
           <motion.p
             variants={itemVariants}
-            className="text-xl text-navy-700 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
+            className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
           >
             Schedule a free inspection today. We'll assess your kitchen's cleaning needs, provide a transparent quote, and begin protecting your operation from fire hazards and compliance issues.
           </motion.p>
@@ -74,7 +74,7 @@ export default function CTA() {
             ].map((benefit, i) => (
               <div key={i} className="flex items-center justify-center gap-3">
                 <div className="w-2 h-2 bg-copper-600 rounded-full" />
-                <span className="text-navy-700 font-light">{benefit}</span>
+                <span className="text-gray-300 font-light">{benefit}</span>
               </div>
             ))}
           </motion.div>
@@ -95,7 +95,7 @@ export default function CTA() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 border-2 border-copper-600 text-copper-600 font-sans font-bold text-lg rounded-lg hover:bg-copper-50 transition-all duration-300"
+              className="px-10 py-5 border-2 border-copper-600 text-copper-500 font-sans font-bold text-lg rounded-lg hover:bg-copper-600 hover:bg-opacity-10 transition-all duration-300"
             >
               (410) 555-1234
             </motion.button>
@@ -104,7 +104,7 @@ export default function CTA() {
           {/* Trust message */}
           <motion.p
             variants={itemVariants}
-            className="text-sm text-navy-600 font-light uppercase tracking-widest"
+            className="text-sm text-gray-400 font-light uppercase tracking-widest"
           >
             Bonded & Insured  •  Same-Day Service  •  24/7 Emergency Response
           </motion.p>

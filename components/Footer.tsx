@@ -25,7 +25,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-navy-950 text-gray-300 py-20 relative overflow-hidden">
+    <footer className="bg-black text-gray-300 py-20 relative overflow-hidden border-t border-copper-600 border-opacity-20">
       {/* Accent background */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'linear-gradient(135deg, rgba(245, 158, 11, .02) 25%, transparent 25%)'
@@ -102,7 +102,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Divider */}
-        <div className="border-t border-navy-800 pt-12">
+        <div className="border-t border-gray-800 pt-12">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
