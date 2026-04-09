@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import type { Variants } from 'framer-motion'
 
 const reasons = [
@@ -26,47 +27,78 @@ const reasons = [
   },
 ]
 
+function AnimatedNumber({ value, duration = 2.5 }: { value: number; duration?: number }) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let isMounted = true
+    const target = value
+
+    const interval = setInterval(() => {
+      setCount(prev => {
+        if (prev >= target) {
+          clearInterval(interval)
+          return target
+        }
+        return Math.min(prev + Math.ceil(target / (duration * 60)), target)
+      })
+    }, 1000 / 60)
+
+    return () => {
+      isMounted = false
+      clearInterval(interval)
+    }
+  }, [value, duration])
+
+  return <>{count}</>
+}
+
 export default function WhyTRC() {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12,
+        staggerChildren: 0.15,
         delayChildren: 0.1,
       },
     },
   }
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, x: -40 },
+    hidden: { opacity: 0, x: -50 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.9,
         ease: "easeOut",
       },
     },
   }
 
   return (
-    <section className="py-32 bg-gradient-to-b from-navy-900 to-navy-950 text-white relative overflow-hidden">
+    <section className="py-40 bg-gradient-to-b from-navy-900 to-navy-950 text-white relative overflow-hidden">
       {/* Elegant background elements */}
       <div className="absolute inset-0">
         <motion.div
-          animate={{ x: [0, 40, 0], y: [0, 20, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 -right-32 w-72 h-72 bg-gradient-to-br from-copper-600 to-copper-900 rounded-full opacity-5 blur-3xl"
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 -right-32 w-80 h-80 bg-gradient-to-br from-copper-600 to-copper-900 rounded-full opacity-8 blur-3xl"
+        />
+        <motion.div
+          animate={{ x: [0, -30, 0], y: [0, -40, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-copper-600 to-orange-600 rounded-full opacity-6 blur-3xl"
         />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.9 }}
           viewport={{ once: true }}
           className="mb-20 max-w-3xl"
         >
@@ -85,7 +117,7 @@ export default function WhyTRC() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24"
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24"
         >
           {reasons.map((reason, index) => (
             <motion.div
@@ -93,9 +125,9 @@ export default function WhyTRC() {
               variants={itemVariants}
               className="group"
             >
-              {/* Number badge */}
-              <div className="mb-6">
-                <span className="text-6xl font-black text-copper-600 opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+              {/* Number badge - animated reveal */}
+              <div className="mb-8 h-20">
+                <span className="text-7xl font-black text-copper-600 opacity-25 group-hover:opacity-100 transition-opacity duration-300 tabular-nums">
                   {reason.number}
                 </span>
               </div>
@@ -104,43 +136,44 @@ export default function WhyTRC() {
               <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-copper-400 transition-colors duration-300">
                 {reason.title}
               </h3>
-              <p className="text-gray-400 font-light leading-relaxed text-lg">
+              <p className="text-gray-400 font-light leading-relaxed text-lg mb-6">
                 {reason.description}
               </p>
 
               {/* Accent line */}
-              <div className="w-0 group-hover:w-16 h-1 bg-gradient-to-r from-copper-600 to-copper-400 transition-all duration-300 mt-6" />
+              <div className="w-0 group-hover:w-20 h-1.5 bg-gradient-to-r from-copper-600 to-copper-400 transition-all duration-300" />
             </motion.div>
           ))}
         </motion.div>
 
         {/* Credentials section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
           viewport={{ once: true }}
           className="border-t border-navy-700 pt-24"
         >
-          <p className="text-copper-400 font-sans text-sm uppercase tracking-widest font-bold mb-8">By The Numbers</p>
+          <p className="text-copper-400 font-sans text-sm uppercase tracking-widest font-bold mb-12">By The Numbers</p>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '500+', label: 'Restaurants Served' },
-              { value: '25+', label: 'Years Experience' },
-              { value: '100%', label: 'Certified Staff' },
-              { value: '24/7', label: 'Emergency Response' },
+              { value: 500, label: 'Restaurants Served' },
+              { value: 25, label: 'Years Experience' },
+              { value: 100, label: 'Certified Staff' },
+              { value: 24, label: 'Hour Emergency Response' },
             ].map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
                 className="text-center group"
               >
-                <div className="text-5xl sm:text-6xl font-black text-copper-600 mb-3 group-hover:text-copper-500 transition-colors">
-                  {stat.value}
+                <div className="text-6xl sm:text-7xl font-black text-copper-600 mb-3 group-hover:text-copper-500 transition-colors tabular-nums">
+                  <AnimatedNumber value={stat.value} duration={2.5} />
+                  {stat.label.includes('Hour') ? '/7' : stat.label.includes('Years') ? '+' : '%'}
                 </div>
                 <p className="text-gray-400 font-light text-sm uppercase tracking-wide">
                   {stat.label}

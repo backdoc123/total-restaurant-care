@@ -3,6 +3,9 @@
 import { motion } from 'framer-motion'
 import type { Variants } from 'framer-motion'
 
+const words = ['Precision', 'Conveyor', 'Oven', 'Cleaning']
+const highlightWords = ['Conveyor', 'Oven']
+
 export default function Hero() {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -10,44 +13,60 @@ export default function Hero() {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.2,
+        delayChildren: 0.3,
       },
     },
   }
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.9,
+        duration: 1.1,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   }
 
+  const wordVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (custom: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: custom * 0.15 + 0.4,
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    }),
+  }
+
   return (
-    <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center pt-32 pb-32">
+    <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center pt-32 pb-32 mt-20">
       {/* Elegant background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Gradient orbs */}
+        {/* Gradient orbs - smooth, elegant floating */}
         <motion.div
-          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-copper-600 to-copper-900 rounded-full opacity-5 blur-3xl"
+          animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-copper-600 via-copper-700 to-copper-900 rounded-full opacity-8 blur-3xl"
         />
         <motion.div
-          animate={{ x: [0, -30, 0], y: [0, -40, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-tr from-copper-500 to-copper-700 rounded-full opacity-3 blur-3xl"
+          animate={{ x: [0, -40, 0], y: [0, -50, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-copper-600 via-copper-700 to-orange-600 rounded-full opacity-6 blur-3xl"
         />
 
-        {/* Subtle grid */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: 'linear-gradient(90deg, rgba(249,158,11,.1) 1px, transparent 1px), linear-gradient(rgba(249,158,11,.1) 1px, transparent 1px)',
-          backgroundSize: '4rem 4rem'
+        {/* Subtle animated grid */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'linear-gradient(90deg, rgba(249,158,11,.15) 1px, transparent 1px), linear-gradient(rgba(249,158,11,.15) 1px, transparent 1px)',
+          backgroundSize: '5rem 5rem'
         }} />
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black opacity-40" />
       </div>
 
       {/* Content */}
@@ -62,26 +81,40 @@ export default function Hero() {
           >
             {/* Badge */}
             <motion.div variants={itemVariants} className="mb-8 inline-block">
-              <div className="px-4 py-2 border border-copper-600 border-opacity-40 rounded-full backdrop-blur-xs bg-copper-600 bg-opacity-10">
+              <div className="px-4 py-2 border border-copper-600 border-opacity-40 rounded-full backdrop-blur-sm bg-copper-600 bg-opacity-10">
                 <span className="text-copper-400 font-sans text-xs uppercase tracking-widest font-semibold">
                   Premium Industrial Cleaning
                 </span>
               </div>
             </motion.div>
 
-            {/* Headline - Premium typography */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-5xl sm:text-6xl lg:text-7xl font-sans font-black mb-8 leading-tight tracking-tight text-white"
-            >
-              Precision{' '}
-              <span className="relative inline-block">
-                <span className="relative z-10">Conveyor</span>
-                <span className="absolute -inset-2 bg-gradient-to-r from-copper-600 to-copper-500 blur-lg opacity-50" />
-                <span className="absolute -inset-2 bg-gradient-to-r from-copper-600 to-copper-500" />
-                <span className="relative text-white">Oven</span>
-              </span>
-              {' '}Cleaning
+            {/* Headline - Word by word reveal */}
+            <motion.h1 className="text-5xl sm:text-6xl lg:text-7xl font-sans font-black mb-8 leading-tight tracking-tight text-white">
+              {words.map((word, index) => (
+                <motion.span
+                  key={index}
+                  custom={index}
+                  variants={wordVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className={`inline-block mr-3 ${
+                    highlightWords.includes(word)
+                      ? 'relative'
+                      : ''
+                  }`}
+                >
+                  {highlightWords.includes(word) ? (
+                    <span className="relative inline-block">
+                      <span className="relative z-10">{word}</span>
+                      <span className="absolute -inset-2 bg-gradient-to-r from-copper-600 to-copper-500 blur-lg opacity-60" />
+                      <span className="absolute -inset-2 bg-gradient-to-r from-copper-600 to-copper-500 opacity-20" />
+                      <span className="relative text-white">{word}</span>
+                    </span>
+                  ) : (
+                    word
+                  )}
+                </motion.span>
+              ))}
             </motion.h1>
 
             {/* Subheading */}
@@ -100,7 +133,7 @@ export default function Hero() {
                 'Same-day service with minimal operational downtime'
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-gradient-to-r from-copper-500 to-copper-400 rounded-full mt-2.5 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-gradient-to-r from-copper-500 to-copper-400 rounded-full mt-3 flex-shrink-0" />
                   <p className="text-gray-200 font-light">{item}</p>
                 </div>
               ))}
@@ -112,17 +145,17 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-6 sm:items-center"
             >
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-copper-600 to-copper-500 text-white font-sans font-bold text-lg rounded-lg hover:shadow-2xl hover:shadow-copper-600/50 transition-all duration-300 flex items-center justify-center"
+                className="px-10 py-4 bg-gradient-to-r from-copper-600 to-copper-500 text-white font-sans font-bold text-lg rounded-lg hover:shadow-2xl hover:shadow-copper-600/50 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Schedule Inspection
-                <span className="ml-2">→</span>
+                <span>→</span>
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-copper-600 border-opacity-60 text-copper-400 font-sans font-bold text-lg rounded-lg hover:bg-copper-600 hover:bg-opacity-10 hover:text-copper-300 transition-all duration-300"
+                className="px-10 py-4 border-2 border-copper-600 border-opacity-60 text-copper-400 font-sans font-bold text-lg rounded-lg hover:bg-copper-600 hover:bg-opacity-15 hover:text-copper-300 transition-all duration-300"
               >
                 (410) 555-1234
               </motion.button>
@@ -137,9 +170,9 @@ export default function Hero() {
 
           {/* Right: Visual Element */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="order-1 lg:order-2"
           >
             {/* Premium image placeholder */}
@@ -147,7 +180,7 @@ export default function Hero() {
               <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-copper-600 border-opacity-30 relative group">
                 {/* Animated accent */}
                 <motion.div
-                  className="absolute -inset-1 bg-gradient-to-r from-copper-600 to-copper-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-300"
+                  className="absolute -inset-1 bg-gradient-to-r from-copper-600 to-copper-400 rounded-2xl opacity-0 group-hover:opacity-25 blur-lg transition-opacity duration-300"
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 />
@@ -155,8 +188,8 @@ export default function Hero() {
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-8 z-10">
                   <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ duration: 5, repeat: Infinity }}
                     className="text-7xl mb-6"
                   >
                     🔧
@@ -168,9 +201,9 @@ export default function Hero() {
 
               {/* Floating card accent */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
                 className="absolute -bottom-12 -right-12 w-48 p-6 bg-black border border-copper-600 border-opacity-30 rounded-xl backdrop-blur-sm hidden lg:block"
               >
                 <p className="text-xs text-copper-400 uppercase tracking-widest mb-2">25+ Years</p>
@@ -183,8 +216,8 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        animate={{ y: [0, 12, 0] }}
-        transition={{ duration: 3, repeat: Infinity }}
+        animate={{ y: [0, 16, 0] }}
+        transition={{ duration: 3.5, repeat: Infinity }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
       >
         <div className="text-copper-500 text-center">
