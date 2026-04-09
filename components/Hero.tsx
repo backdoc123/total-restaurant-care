@@ -55,8 +55,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold mb-8 leading-tight text-white"
           >
-            Pizza Oven Cleaning{' '}
-            <span className="text-copper-500">That Powers Your Kitchen</span>
+            Chris
           </motion.h1>
 
           {/* Subheading */}
