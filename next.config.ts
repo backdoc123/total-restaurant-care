@@ -16,9 +16,6 @@ const nextConfig: NextConfig = {
   // SEO and metadata
   poweredByHeader: false,
 
-  // Performance optimizations
-  swcMinify: true,
-
   // Headers for security and performance
   async headers() {
     return [
