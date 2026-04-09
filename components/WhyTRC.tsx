@@ -78,19 +78,29 @@ export default function WhyTRC() {
   }
 
   return (
-    <section className="py-40 bg-gradient-to-b from-navy-900 to-navy-950 text-white relative overflow-hidden">
-      {/* Elegant background elements */}
-      <div className="absolute inset-0">
+    <section className="py-40 bg-black text-white relative overflow-hidden">
+      {/* Elegant background elements - matching hero */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Gradient orbs - smooth, elegant floating */}
         <motion.div
-          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 -right-32 w-80 h-80 bg-gradient-to-br from-copper-600 to-copper-900 rounded-full opacity-8 blur-3xl"
+          className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-copper-600 via-copper-700 to-copper-900 rounded-full opacity-8 blur-3xl"
         />
         <motion.div
-          animate={{ x: [0, -30, 0], y: [0, -40, 0] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-copper-600 to-orange-600 rounded-full opacity-6 blur-3xl"
+          animate={{ x: [0, -40, 0], y: [0, -50, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-copper-600 via-copper-700 to-orange-600 rounded-full opacity-6 blur-3xl"
         />
+
+        {/* Subtle animated grid */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'linear-gradient(90deg, rgba(249,158,11,.15) 1px, transparent 1px), linear-gradient(rgba(249,158,11,.15) 1px, transparent 1px)',
+          backgroundSize: '5rem 5rem'
+        }} />
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black opacity-40" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
@@ -103,7 +113,7 @@ export default function WhyTRC() {
           className="mb-20 max-w-3xl"
         >
           <p className="text-copper-400 font-sans text-sm uppercase tracking-widest font-bold mb-4">Why Choose TRC</p>
-          <h2 className="text-5xl sm:text-6xl font-sans font-black leading-tight mb-8">
+          <h2 className="text-5xl sm:text-6xl font-sans font-black leading-tight mb-8 text-white">
             The Standard for Commercial Kitchen Cleaning
           </h2>
           <p className="text-xl text-gray-300 font-light leading-relaxed">
@@ -125,7 +135,7 @@ export default function WhyTRC() {
               variants={itemVariants}
               className="group"
             >
-              {/* Number badge - HIGH CONTRAST copper on navy */}
+              {/* Number badge - HIGH CONTRAST copper on black */}
               <div className="mb-8 h-20">
                 <span className="text-7xl font-black text-copper-400 tabular-nums drop-shadow-lg">
                   {reason.number}
@@ -133,10 +143,10 @@ export default function WhyTRC() {
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-copper-400 transition-colors duration-300">
+              <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-copper-400 transition-colors duration-300 text-white">
                 {reason.title}
               </h3>
-              <p className="text-gray-400 font-light leading-relaxed text-lg mb-6">
+              <p className="text-gray-300 font-light leading-relaxed text-lg mb-6">
                 {reason.description}
               </p>
 
@@ -152,7 +162,7 @@ export default function WhyTRC() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
           viewport={{ once: true }}
-          className="border-t border-navy-700 pt-24"
+          className="border-t border-gray-800 pt-24"
         >
           <p className="text-copper-400 font-sans text-sm uppercase tracking-widest font-bold mb-12">By The Numbers</p>
           
@@ -175,7 +185,7 @@ export default function WhyTRC() {
                   <AnimatedNumber value={stat.value} duration={2.5} />
                   {stat.label.includes('Hour') ? '/7' : stat.label.includes('Years') ? '+' : '%'}
                 </div>
-                <p className="text-gray-400 font-light text-sm uppercase tracking-wide">
+                <p className="text-gray-300 font-light text-sm uppercase tracking-wide">
                   {stat.label}
                 </p>
               </motion.div>
