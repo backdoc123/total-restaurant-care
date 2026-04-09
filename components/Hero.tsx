@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import type { Variants } from 'framer-motion'
 
 const words = ['Precision', 'Conveyor', 'Oven', 'Cleaning']
@@ -159,8 +160,45 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Empty space (no image placeholder) */}
-          <div className="order-1 lg:order-2 hidden lg:block" />
+          {/* Right: Hero Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="order-1 lg:order-2 hidden lg:block"
+          >
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden border-2 border-copper-600 border-opacity-40 hover:border-copper-500 hover:border-opacity-80 transition-all duration-300 group">
+                {/* Animated accent */}
+                <motion.div
+                  className="absolute -inset-1 bg-gradient-to-r from-copper-600 to-copper-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-300"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+
+                {/* Image */}
+                <Image
+                  src="/hero-oven.jpg"
+                  alt="Conveyor Oven Cleaning"
+                  width={600}
+                  height={600}
+                  className="relative z-10 w-full h-auto object-cover"
+                  priority
+                />
+              </div>
+
+              {/* Floating card accent */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="absolute -bottom-12 -right-12 w-48 p-6 bg-black border border-copper-600 border-opacity-30 rounded-xl backdrop-blur-sm hidden lg:block"
+              >
+                <p className="text-xs text-copper-400 uppercase tracking-widest mb-2">25+ Years</p>
+                <p className="text-2xl font-bold text-white">Industry Experience</p>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </div>
 
