@@ -125,9 +125,9 @@ export default function WhyTRC() {
               variants={itemVariants}
               className="group"
             >
-              {/* Number badge - animated reveal */}
+              {/* Number badge - HIGH CONTRAST copper on navy */}
               <div className="mb-8 h-20">
-                <span className="text-7xl font-black text-copper-600 opacity-25 group-hover:opacity-100 transition-opacity duration-300 tabular-nums">
+                <span className="text-7xl font-black text-copper-400 tabular-nums drop-shadow-lg">
                   {reason.number}
                 </span>
               </div>
@@ -171,7 +171,7 @@ export default function WhyTRC() {
                 viewport={{ once: true, margin: "-50px" }}
                 className="text-center group"
               >
-                <div className="text-6xl sm:text-7xl font-black text-copper-600 mb-3 group-hover:text-copper-500 transition-colors tabular-nums">
+                <div className="text-6xl sm:text-7xl font-black text-copper-400 mb-3 group-hover:text-copper-300 transition-colors tabular-nums drop-shadow-lg">
                   <AnimatedNumber value={stat.value} duration={2.5} />
                   {stat.label.includes('Hour') ? '/7' : stat.label.includes('Years') ? '+' : '%'}
                 </div>

@@ -79,15 +79,6 @@ export default function Hero() {
             animate="visible"
             className="order-2 lg:order-1"
           >
-            {/* Badge */}
-            <motion.div variants={itemVariants} className="mb-8 inline-block">
-              <div className="px-4 py-2 border border-copper-600 border-opacity-40 rounded-full backdrop-blur-sm bg-copper-600 bg-opacity-10">
-                <span className="text-copper-400 font-sans text-xs uppercase tracking-widest font-semibold">
-                  Premium Industrial Cleaning
-                </span>
-              </div>
-            </motion.div>
-
             {/* Headline - Word by word reveal */}
             <motion.h1 className="text-5xl sm:text-6xl lg:text-7xl font-sans font-black mb-8 leading-tight tracking-tight text-white">
               {words.map((word, index) => (
@@ -117,12 +108,12 @@ export default function Hero() {
               ))}
             </motion.h1>
 
-            {/* Subheading */}
+            {/* Subheading - Integrated premium industrial cleaning text */}
             <motion.p
               variants={itemVariants}
               className="text-xl sm:text-2xl text-gray-300 max-w-xl mb-10 font-light leading-relaxed"
             >
-              Enterprise-grade cleaning for commercial kitchens. Fire hazard prevention, regulatory compliance, and operational excellence in every service.
+              Premium industrial cleaning for commercial kitchens. Fire hazard prevention, regulatory compliance, and operational excellence in every service.
             </motion.p>
 
             {/* Value propositions */}
@@ -168,49 +159,8 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Visual Element */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="order-1 lg:order-2"
-          >
-            {/* Premium image placeholder */}
-            <div className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-copper-600 border-opacity-30 relative group">
-                {/* Animated accent */}
-                <motion.div
-                  className="absolute -inset-1 bg-gradient-to-r from-copper-600 to-copper-400 rounded-2xl opacity-0 group-hover:opacity-25 blur-lg transition-opacity duration-300"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                />
-
-                {/* Content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 z-10">
-                  <motion.div
-                    animate={{ y: [0, -15, 0] }}
-                    transition={{ duration: 5, repeat: Infinity }}
-                    className="text-7xl mb-6"
-                  >
-                    🔧
-                  </motion.div>
-                  <p className="text-xl font-light text-gray-300 text-center">Conveyor Oven Cleaning</p>
-                  <p className="text-sm text-gray-500 mt-4">[Premium Image Placeholder]</p>
-                </div>
-              </div>
-
-              {/* Floating card accent */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="absolute -bottom-12 -right-12 w-48 p-6 bg-black border border-copper-600 border-opacity-30 rounded-xl backdrop-blur-sm hidden lg:block"
-              >
-                <p className="text-xs text-copper-400 uppercase tracking-widest mb-2">25+ Years</p>
-                <p className="text-2xl font-bold text-white">Industry Experience</p>
-              </motion.div>
-            </div>
-          </motion.div>
+          {/* Right: Empty space (no image placeholder) */}
+          <div className="order-1 lg:order-2 hidden lg:block" />
         </div>
       </div>
 
