@@ -126,7 +126,7 @@ export default function WhyTRC() {
       </div>
 
       {/* Four pillars grid - Dark background throughout */}
-      <div className="py-24 bg-gradient-to-b from-black to-navy-900 relative z-10">
+      <div className="py-24 bg-black relative z-10">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
           <motion.div
             variants={containerVariants}
@@ -166,8 +166,8 @@ export default function WhyTRC() {
         </div>
       </div>
 
-      {/* Credentials section - Continue dark background */}
-      <div className="py-24 bg-gradient-to-b from-navy-900 to-black relative z-10">
+      {/* Credentials section - SOLID BLACK background */}
+      <div className="py-24 bg-black relative z-10">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
