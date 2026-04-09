@@ -5,20 +5,24 @@ import type { Variants } from 'framer-motion'
 
 const reasons = [
   {
-    title: 'Pizza Oven Expertise',
-    description: 'Specialized in conveyor oven cleaning. We understand the unique challenges and requirements of your equipment.',
+    number: '01',
+    title: 'Specialized Expertise',
+    description: 'Dedicated conveyor oven cleaning specialists with decades of combined experience. We understand your equipment like no one else.',
   },
   {
-    title: 'Fire Hazard Prevention',
-    description: 'Grease buildup is a leading cause of kitchen fires. We eliminate it completely and keep your operation safe.',
+    number: '02',
+    title: 'Safety First',
+    description: 'Fire hazard elimination through deep industrial cleaning. Your team stays safe. Your kitchen stays protected.',
   },
   {
-    title: 'Regulatory Compliance',
-    description: 'Ensure your kitchen meets all local health and safety codes. Avoid costly citations and operational shutdowns.',
+    number: '03',
+    title: 'Code Compliant',
+    description: 'Meet all health department and fire code requirements. Avoid violations, fines, and operational interruptions.',
   },
   {
-    title: 'Minimal Downtime',
-    description: 'Fast, efficient service. Get your kitchen back to full operation the same day we work with you.',
+    number: '04',
+    title: 'Business Continuity',
+    description: 'Minimal downtime means your kitchen keeps operating. Same-day service gets you back up and running fast.',
   },
 ]
 
@@ -28,110 +32,121 @@ export default function WhyTRC() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
       },
     },
   }
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, x: -30 },
+    hidden: { opacity: 0, x: -40 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.7,
         ease: "easeOut",
       },
     },
   }
 
   return (
-    <section className="py-24 bg-navy-900 text-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="py-32 bg-gradient-to-b from-navy-900 to-navy-950 text-white relative overflow-hidden">
+      {/* Elegant background elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{ x: [0, 40, 0], y: [0, 20, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 -right-32 w-72 h-72 bg-gradient-to-br from-copper-600 to-copper-900 rounded-full opacity-5 blur-3xl"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="mb-20 max-w-3xl"
         >
-          <span className="text-copper-500 font-sans text-sm uppercase tracking-widest font-semibold">
-            Why Choose TRC
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-serif font-bold mt-4 mb-6">
-            Professional Excellence Since Day One
+          <p className="text-copper-400 font-sans text-sm uppercase tracking-widest font-bold mb-4">Why Choose TRC</p>
+          <h2 className="text-5xl sm:text-6xl font-sans font-black leading-tight mb-8">
+            The Standard for Commercial Kitchen Cleaning
           </h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
-            We combine deep expertise, operational efficiency, and professionalism to keep your kitchen safe, compliant, and running smoothly.
+          <p className="text-xl text-gray-300 font-light leading-relaxed">
+            We combine specialized expertise, proven processes, and unwavering commitment to your operational success.
           </p>
         </motion.div>
 
-        {/* Four reasons grid */}
+        {/* Four pillars grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24"
         >
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="flex gap-6"
+              className="group"
             >
-              {/* Icon badge */}
-              <motion.div
-                whileInView={{ scale: [0.8, 1.1, 1] }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex-shrink-0"
-              >
-                <div className="flex items-center justify-center h-16 w-16 rounded-xl bg-copper-600 text-white font-bold text-xl font-serif">
-                  {index + 1}
-                </div>
-              </motion.div>
+              {/* Number badge */}
+              <div className="mb-6">
+                <span className="text-6xl font-black text-copper-600 opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+                  {reason.number}
+                </span>
+              </div>
 
               {/* Content */}
-              <div className="flex-1 pt-1">
-                <h3 className="text-xl font-serif font-bold mb-3 text-white">
-                  {reason.title}
-                </h3>
-                <p className="text-slate-300 font-sans leading-relaxed text-base">
-                  {reason.description}
-                </p>
-              </div>
+              <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-copper-400 transition-colors duration-300">
+                {reason.title}
+              </h3>
+              <p className="text-gray-400 font-light leading-relaxed text-lg">
+                {reason.description}
+              </p>
+
+              {/* Accent line */}
+              <div className="w-0 group-hover:w-16 h-1 bg-gradient-to-r from-copper-600 to-copper-400 transition-all duration-300 mt-6" />
             </motion.div>
           ))}
         </motion.div>
 
         {/* Credentials section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
           viewport={{ once: true }}
-          className="pt-20 border-t border-slate-700"
+          className="border-t border-navy-700 pt-24"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-5xl font-bold text-copper-500 mb-2 font-serif">500+</div>
-              <p className="text-slate-300 font-sans text-sm">Restaurants Served</p>
-            </div>
-            <div>
-              <div className="text-5xl font-bold text-copper-500 mb-2 font-serif">25+</div>
-              <p className="text-slate-300 font-sans text-sm">Years Experience</p>
-            </div>
-            <div>
-              <div className="text-5xl font-bold text-copper-500 mb-2 font-serif">100%</div>
-              <p className="text-slate-300 font-sans text-sm">Bonded & Insured</p>
-            </div>
-            <div>
-              <div className="text-5xl font-bold text-copper-500 mb-2 font-serif">24h</div>
-              <p className="text-slate-300 font-sans text-sm">Emergency Response</p>
-            </div>
+          <p className="text-copper-400 font-sans text-sm uppercase tracking-widest font-bold mb-8">By The Numbers</p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: '500+', label: 'Restaurants Served' },
+              { value: '25+', label: 'Years Experience' },
+              { value: '100%', label: 'Certified Staff' },
+              { value: '24/7', label: 'Emergency Response' },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center group"
+              >
+                <div className="text-5xl sm:text-6xl font-black text-copper-600 mb-3 group-hover:text-copper-500 transition-colors">
+                  {stat.value}
+                </div>
+                <p className="text-gray-400 font-light text-sm uppercase tracking-wide">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

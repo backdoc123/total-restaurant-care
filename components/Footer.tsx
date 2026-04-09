@@ -4,60 +4,73 @@ import { motion } from 'framer-motion'
 import type { Variants } from 'framer-motion'
 
 export default function Footer() {
-  const footerVariants: Variants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   }
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4 },
+      transition: { duration: 0.6 },
     },
   }
 
   return (
-    <footer className="bg-navy-950 text-slate-300 py-16">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+    <footer className="bg-navy-950 text-gray-300 py-20 relative overflow-hidden">
+      {/* Accent background */}
+      <div className="absolute inset-0 opacity-20" style={{
+        backgroundImage: 'linear-gradient(135deg, rgba(245, 158, 11, .02) 25%, transparent 25%)'
+      }} />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
         <motion.div
-          variants={footerVariants}
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
         >
-          {/* Company info */}
+          {/* Company */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-white font-serif font-bold text-lg mb-4">
+            <h3 className="text-lg font-sans font-bold text-white mb-4">
               Total Restaurant Care
             </h3>
-            <p className="font-sans text-sm leading-relaxed">
-              Professional commercial kitchen cleaning services for restaurants nationwide.
+            <p className="font-light text-gray-400 leading-relaxed">
+              Enterprise-grade commercial kitchen cleaning for restaurants and food service operations.
             </p>
           </motion.div>
 
           {/* Services */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-white font-sans font-bold mb-4">Services</h4>
-            <ul className="space-y-2 font-sans text-sm">
-              <li><a href="#" className="text-slate-400 hover:text-copper-400 transition-colors">Oven Cleaning</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-copper-400 transition-colors">Kitchen Exhaust</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-copper-400 transition-colors">Equipment Cleaning</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-copper-400 transition-colors">Maintenance Plans</a></li>
+            <h4 className="text-sm font-sans font-bold text-white uppercase tracking-widest mb-6">
+              Services
+            </h4>
+            <ul className="space-y-3 text-sm font-light">
+              {['Conveyor Oven Cleaning', 'Hood & Duct Cleaning', 'Equipment Cleaning', 'Emergency Services'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-gray-400 hover:text-copper-500 transition-colors duration-200">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
           {/* Service Areas */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-white font-sans font-bold mb-4">Service Areas</h4>
-            <ul className="space-y-2 font-sans text-sm text-slate-400">
+            <h4 className="text-sm font-sans font-bold text-white uppercase tracking-widest mb-6">
+              Service Areas
+            </h4>
+            <ul className="space-y-3 text-sm font-light text-gray-400">
               <li>Maryland</li>
               <li>Washington, DC</li>
               <li>Virginia</li>
@@ -67,37 +80,50 @@ export default function Footer() {
 
           {/* Contact */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-white font-sans font-bold mb-4">Contact</h4>
-            <ul className="space-y-3 font-sans text-sm">
+            <h4 className="text-sm font-sans font-bold text-white uppercase tracking-widest mb-6">
+              Contact
+            </h4>
+            <ul className="space-y-4 text-sm font-light">
               <li>
-                <a href="tel:4105551234" className="text-slate-400 hover:text-copper-400 transition-colors">
+                <a href="tel:4105551234" className="text-copper-500 hover:text-copper-400 transition-colors duration-200 text-base font-semibold">
                   (410) 555-1234
                 </a>
               </li>
               <li>
-                <a href="mailto:info@trc.com" className="text-slate-400 hover:text-copper-400 transition-colors">
+                <a href="mailto:info@trc.com" className="text-gray-400 hover:text-copper-500 transition-colors duration-200">
                   info@trc.com
                 </a>
               </li>
-              <li className="text-slate-400">24/7 Emergency Response</li>
+              <li className="text-gray-500">
+                24/7 Emergency Response
+              </li>
             </ul>
           </motion.div>
         </motion.div>
 
         {/* Divider */}
-        <motion.div
-          variants={itemVariants}
-          className="border-t border-slate-800 pt-8"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 font-sans text-sm text-slate-500">
+        <div className="border-t border-navy-800 pt-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-light text-gray-500"
+          >
             <p>&copy; 2026 Total Restaurant Care. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="text-slate-400 hover:text-copper-400 transition-colors">Privacy Policy</a>
-              <a href="#" className="text-slate-400 hover:text-copper-400 transition-colors">Terms of Service</a>
-              <a href="#" className="text-slate-400 hover:text-copper-400 transition-colors">Sitemap</a>
+            <div className="flex gap-8">
+              <a href="#" className="hover:text-copper-500 transition-colors duration-200">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-copper-500 transition-colors duration-200">
+                Terms of Service
+              </a>
+              <a href="#" className="hover:text-copper-500 transition-colors duration-200">
+                Sitemap
+              </a>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </footer>
   )

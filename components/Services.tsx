@@ -5,28 +5,34 @@ import type { Variants } from 'framer-motion'
 
 const services = [
   {
-    title: 'Conveyor Oven Cleaning',
-    description: 'Deep industrial cleaning of pizza ovens and conveyor systems. Removes grease buildup, carbon deposits, and fire hazards. Certified process ensures optimal equipment performance.',
+    icon: '🔬',
+    title: 'Deep Industrial Cleaning',
+    description: 'Certified technicians use proven methods to remove grease, carbon, and buildup from conveyor ovens and kitchen systems.',
   },
   {
-    title: 'Kitchen Hood & Duct Cleaning',
-    description: 'Complete exhaust system cleaning including hoods, ducts, and vents. Meets all local fire codes and health department requirements. Prevents costly violations.',
+    icon: '🛡️',
+    title: 'Fire Hazard Prevention',
+    description: 'Eliminate dangerous grease accumulation. Our process ensures your kitchen stays safe and fire-compliant.',
   },
   {
-    title: 'Equipment Deep Cleaning',
-    description: 'Professional cleaning of stoves, grills, fryers, and specialized kitchen equipment. Extends equipment lifespan and maintains food safety standards.',
+    icon: '⚖️',
+    title: 'Regulatory Compliance',
+    description: 'Meet all local health codes and safety standards. Avoid costly violations and operational shutdowns.',
   },
   {
-    title: 'Fire Hazard Remediation',
-    description: 'Comprehensive grease removal to eliminate fire risks. Certified technicians follow industry best practices. Your operation stays safe and compliant.',
+    icon: '⏱️',
+    title: 'Minimal Downtime',
+    description: 'Same-day service options keep your operation running. Efficient work minimizes kitchen interruption.',
   },
   {
-    title: 'Scheduled Maintenance Programs',
-    description: 'Recurring cleaning plans customized to your kitchen\'s usage and requirements. Prevents buildup, reduces emergency calls, minimizes downtime.',
+    icon: '📅',
+    title: 'Scheduled Maintenance',
+    description: 'Recurring cleaning programs customized to your kitchen\'s needs. Prevents buildup before it becomes critical.',
   },
   {
-    title: 'Emergency & Rapid Response',
-    description: '24-hour emergency cleaning services available. Same-day appointments to minimize operational interruption. Rapid deployment for urgent situations.',
+    icon: '🚨',
+    title: 'Emergency Response',
+    description: '24-hour availability for urgent cleaning needs. Rapid deployment when you need it most.',
   },
 ]
 
@@ -55,24 +61,27 @@ export default function Services() {
   }
 
   return (
-    <section className="py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="py-32 bg-white relative overflow-hidden">
+      {/* Subtle background */}
+      <div className="absolute inset-0 opacity-30" style={{
+        backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(245, 158, 11, .02) 0%, transparent 50%)'
+      }} />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="mb-24"
+          className="mb-24 max-w-3xl"
         >
-          <span className="text-orange-600 font-sans text-sm uppercase tracking-widest font-bold">
-            Our Services
-          </span>
-          <h2 className="text-5xl sm:text-6xl font-sans font-black text-black mt-4 mb-8">
+          <p className="text-copper-600 font-sans text-sm uppercase tracking-widest font-bold mb-4">Our Services</p>
+          <h2 className="text-5xl sm:text-6xl font-sans font-black text-navy-900 mb-8 leading-tight">
             Complete Kitchen Cleaning Solutions
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl font-light leading-relaxed">
-            From conveyor ovens to hood systems, we provide comprehensive cleaning services that keep your commercial kitchen safe, compliant, and operating at peak efficiency.
+          <p className="text-xl text-navy-700 font-light leading-relaxed">
+            From conveyor ovens to exhaust systems, we provide comprehensive cleaning services that prioritize safety, compliance, and operational efficiency.
           </p>
         </motion.div>
 
@@ -89,15 +98,23 @@ export default function Services() {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="p-8 bg-gray-50 border-l-4 border-orange-600 rounded-lg hover:shadow-2xl transition-all duration-300"
+              className="group p-8 bg-white border-2 border-navy-100 rounded-xl hover:border-copper-600 hover:border-opacity-50 hover:shadow-2xl hover:shadow-copper-600/10 transition-all duration-300"
             >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-3 h-3 bg-orange-600 mt-2 flex-shrink-0" />
-                <h3 className="text-2xl font-sans font-bold text-black">
+              {/* Icon */}
+              <div className="text-5xl mb-6 inline-block group-hover:animate-float">
+                {service.icon}
+              </div>
+
+              {/* Title with accent line */}
+              <div className="mb-4">
+                <h3 className="text-xl font-sans font-bold text-navy-900">
                   {service.title}
                 </h3>
+                <div className="w-0 group-hover:w-12 h-1 bg-gradient-to-r from-copper-600 to-copper-400 transition-all duration-300 mt-3" />
               </div>
-              <p className="text-gray-700 font-sans leading-relaxed">
+
+              {/* Description */}
+              <p className="text-navy-700 font-light leading-relaxed">
                 {service.description}
               </p>
             </motion.div>

@@ -9,7 +9,7 @@ export default function CTA() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
         delayChildren: 0.1,
       },
     },
@@ -21,15 +21,20 @@ export default function CTA() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         ease: "easeOut",
       },
     },
   }
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute inset-0 opacity-40" style={{
+        backgroundImage: 'radial-gradient(circle at 80% 20%, rgba(245, 158, 11, .03) 0%, transparent 50%)'
+      }} />
+
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -37,9 +42,9 @@ export default function CTA() {
           viewport={{ once: true }}
           className="text-center"
         >
-          {/* Icon */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-copper-600 text-white text-4xl">
+          {/* Icon accent */}
+          <motion.div variants={itemVariants} className="mb-8 inline-block">
+            <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-copper-600 to-copper-500 flex items-center justify-center text-white text-3xl shadow-lg shadow-copper-600/30">
               ✓
             </div>
           </motion.div>
@@ -47,18 +52,32 @@ export default function CTA() {
           {/* Headline */}
           <motion.h2
             variants={itemVariants}
-            className="text-4xl sm:text-5xl font-serif font-bold text-navy-900 mb-6"
+            className="text-5xl sm:text-6xl font-sans font-black text-navy-900 mb-8 leading-tight"
           >
-            Ready to Transform Your Kitchen?
+            Ready to Protect Your Kitchen?
           </motion.h2>
 
           {/* Subheading */}
           <motion.p
             variants={itemVariants}
-            className="text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
+            className="text-xl text-navy-700 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
           >
-            Schedule a free inspection today. We'll assess your kitchen cleaning needs, provide a transparent quote, and get started on keeping your operation running at peak performance.
+            Schedule a free inspection today. We'll assess your kitchen's cleaning needs, provide a transparent quote, and begin protecting your operation from fire hazards and compliance issues.
           </motion.p>
+
+          {/* Key benefits */}
+          <motion.div variants={itemVariants} className="space-y-4 mb-12 max-w-xl mx-auto">
+            {[
+              'No-obligation inspection and assessment',
+              'Transparent pricing with detailed scope',
+              'Same-day service availability',
+            ].map((benefit, i) => (
+              <div key={i} className="flex items-center justify-center gap-3">
+                <div className="w-2 h-2 bg-copper-600 rounded-full" />
+                <span className="text-navy-700 font-light">{benefit}</span>
+              </div>
+            ))}
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
@@ -66,16 +85,17 @@ export default function CTA() {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="px-12 py-5 bg-copper-600 text-white font-sans font-bold text-lg rounded-lg hover:bg-copper-500 transition-colors duration-300 shadow-xl"
+              className="px-10 py-5 bg-gradient-to-r from-copper-600 to-copper-500 text-white font-sans font-bold text-lg rounded-lg hover:shadow-2xl hover:shadow-copper-600/40 transition-all duration-300 flex items-center gap-2"
             >
-              Schedule Free Inspection
+              Schedule Inspection
+              <span>→</span>
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-12 py-5 border-2 border-copper-600 text-copper-600 font-sans font-bold text-lg rounded-lg hover:bg-copper-600 hover:text-white transition-all duration-300"
+              className="px-10 py-5 border-2 border-copper-600 text-copper-600 font-sans font-bold text-lg rounded-lg hover:bg-copper-50 transition-all duration-300"
             >
               (410) 555-1234
             </motion.button>
@@ -84,9 +104,9 @@ export default function CTA() {
           {/* Trust message */}
           <motion.p
             variants={itemVariants}
-            className="text-slate-500 font-sans text-sm"
+            className="text-sm text-navy-600 font-light uppercase tracking-widest"
           >
-            Bonded & Insured  •  Same-Day Service Options  •  Emergency Response Available
+            Bonded & Insured  •  Same-Day Service  •  24/7 Emergency Response
           </motion.p>
         </motion.div>
       </div>
