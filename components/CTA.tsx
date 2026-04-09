@@ -28,7 +28,7 @@ export default function CTA() {
   }
 
   return (
-    <section className="py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden -mt-16">
       {/* Background accent */}
       <div className="absolute inset-0 opacity-40" style={{
         backgroundImage: 'radial-gradient(circle at 80% 20%, rgba(245, 158, 11, .03) 0%, transparent 50%)'
