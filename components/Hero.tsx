@@ -45,7 +45,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center pt-32 pb-32 mt-20">
+    <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center pt-20 pb-16 sm:pt-32 sm:pb-32 mt-20">
       {/* Elegant background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradient orbs - smooth, elegant floating */}
@@ -71,8 +71,8 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-center">
           {/* Left: Text Content */}
           <motion.div
             variants={containerVariants}
@@ -81,7 +81,7 @@ export default function Hero() {
             className="order-2 lg:order-1"
           >
             {/* Headline - Word by word reveal */}
-            <motion.h1 className="text-5xl sm:text-6xl lg:text-7xl font-sans font-black mb-8 leading-tight tracking-tight text-white">
+            <motion.h1 className="text-4xl sm:text-5xl lg:text-7xl font-sans font-black mb-6 sm:mb-8 leading-tight tracking-tight text-white">
               {words.map((word, index) => (
                 <motion.span
                   key={index}
@@ -89,7 +89,7 @@ export default function Hero() {
                   variants={wordVariants}
                   initial="hidden"
                   animate="visible"
-                  className={`inline-block mr-3 ${
+                  className={`inline-block mr-2 sm:mr-3 ${
                     highlightWords.includes(word)
                       ? 'relative'
                       : ''
@@ -112,21 +112,21 @@ export default function Hero() {
             {/* Subheading - Integrated premium industrial cleaning text */}
             <motion.p
               variants={itemVariants}
-              className="text-xl sm:text-2xl text-gray-300 max-w-xl mb-10 font-light leading-relaxed"
+              className="text-base sm:text-xl lg:text-2xl text-gray-300 max-w-xl mb-8 sm:mb-10 font-light leading-relaxed"
             >
               Premium industrial cleaning for commercial kitchens. Fire hazard prevention, regulatory compliance, and operational excellence in every service.
             </motion.p>
 
             {/* Value propositions */}
-            <motion.div variants={itemVariants} className="space-y-4 mb-12">
+            <motion.div variants={itemVariants} className="space-y-2 sm:space-y-4 mb-8 sm:mb-12">
               {[
                 'Deep industrial cleaning with certified technicians',
                 'Fire hazard prevention & regulatory compliance',
                 'Same-day service with minimal operational downtime'
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-gradient-to-r from-copper-500 to-copper-400 rounded-full mt-3 flex-shrink-0" />
-                  <p className="text-gray-200 font-light">{item}</p>
+                <div key={i} className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-2 h-2 bg-gradient-to-r from-copper-500 to-copper-400 rounded-full mt-2 sm:mt-3 flex-shrink-0" />
+                  <p className="text-sm sm:text-base text-gray-200 font-light">{item}</p>
                 </div>
               ))}
             </motion.div>
@@ -134,12 +134,12 @@ export default function Hero() {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-6 sm:items-center"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 sm:items-center"
             >
               <motion.button
                 whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-gradient-to-r from-copper-600 to-copper-500 text-white font-sans font-bold text-lg rounded-lg hover:shadow-2xl hover:shadow-copper-600/50 transition-all duration-300 flex items-center justify-center gap-2"
+                className="px-6 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-copper-600 to-copper-500 text-white font-sans font-bold text-sm sm:text-lg rounded-lg hover:shadow-2xl hover:shadow-copper-600/50 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Schedule Inspection
                 <span>→</span>
@@ -147,28 +147,28 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 border-2 border-copper-600 border-opacity-60 text-copper-400 font-sans font-bold text-lg rounded-lg hover:bg-copper-600 hover:bg-opacity-15 hover:text-copper-300 transition-all duration-300"
+                className="px-6 sm:px-10 py-3 sm:py-4 border-2 border-copper-600 border-opacity-60 text-copper-400 font-sans font-bold text-sm sm:text-lg rounded-lg hover:bg-copper-600 hover:bg-opacity-15 hover:text-copper-300 transition-all duration-300"
               >
                 (410) 555-1234
               </motion.button>
             </motion.div>
 
             {/* Trust line */}
-            <motion.div variants={itemVariants} className="mt-16 pt-12 border-t border-gray-800">
-              <p className="text-xs text-gray-500 uppercase tracking-widest mb-4">Trusted by industry leaders</p>
-              <div className="text-lg text-gray-400 font-light">Pizza Hut • Dominos • Papa Johns</div>
+            <motion.div variants={itemVariants} className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-gray-800">
+              <p className="text-xs text-gray-500 uppercase tracking-widest mb-2 sm:mb-4">Trusted by industry leaders</p>
+              <div className="text-base sm:text-lg text-gray-400 font-light">Pizza Hut • Dominos • Papa Johns</div>
             </motion.div>
           </motion.div>
 
-          {/* Right: Hero Image */}
+          {/* Right: Hero Image - VISIBLE ON ALL SCREENS */}
           <motion.div
-            initial={{ opacity: 0, x: 80 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="order-1 lg:order-2 hidden lg:block"
+            className="order-1 lg:order-2 w-full"
           >
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden border-2 border-copper-600 border-opacity-40 hover:border-copper-500 hover:border-opacity-80 transition-all duration-300 group">
+            <div className="relative w-full aspect-square sm:aspect-auto">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border-2 border-copper-600 border-opacity-40 hover:border-copper-500 hover:border-opacity-80 transition-all duration-300 group w-full h-auto">
                 {/* Animated accent */}
                 <motion.div
                   className="absolute -inset-1 bg-gradient-to-r from-copper-600 to-copper-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-300"
@@ -176,7 +176,7 @@ export default function Hero() {
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 />
 
-                {/* Image */}
+                {/* Image - Responsive with proper sizing */}
                 <Image
                   src="/hero-oven.jpg"
                   alt="Conveyor Oven Cleaning"
@@ -184,18 +184,19 @@ export default function Hero() {
                   height={600}
                   className="relative z-10 w-full h-auto object-cover"
                   priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                 />
               </div>
 
-              {/* Floating card accent */}
+              {/* Floating card accent - HIDDEN ON MOBILE */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="absolute -bottom-12 -right-12 w-48 p-6 bg-black border border-copper-600 border-opacity-30 rounded-xl backdrop-blur-sm hidden lg:block"
+                className="absolute -bottom-8 sm:-bottom-12 -right-8 sm:-right-12 w-40 sm:w-48 p-4 sm:p-6 bg-black border border-copper-600 border-opacity-30 rounded-lg sm:rounded-xl backdrop-blur-sm hidden sm:block"
               >
                 <p className="text-xs text-copper-400 uppercase tracking-widest mb-2">25+ Years</p>
-                <p className="text-2xl font-bold text-white">Industry Experience</p>
+                <p className="text-lg sm:text-2xl font-bold text-white">Industry Experience</p>
               </motion.div>
             </div>
           </motion.div>
@@ -206,10 +207,10 @@ export default function Hero() {
       <motion.div
         animate={{ y: [0, 16, 0] }}
         transition={{ duration: 3.5, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-20"
       >
         <div className="text-copper-500 text-center">
-          <p className="text-xs font-sans mb-3 uppercase tracking-widest">Scroll to explore</p>
+          <p className="text-xs font-sans mb-2 sm:mb-3 uppercase tracking-widest">Scroll to explore</p>
           <svg className="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
