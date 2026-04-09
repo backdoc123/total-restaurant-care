@@ -112,7 +112,7 @@ export default function WhyTRC() {
           viewport={{ once: true }}
           className="mb-20 max-w-3xl"
         >
-          <p className="text-copper-400 font-sans text-sm uppercase tracking-widest font-bold mb-4">Why Choose TRC</p>
+          <p className="text-copper-500 font-sans text-sm uppercase tracking-widest font-bold mb-4">Why Choose TRC</p>
           <h2 className="text-5xl sm:text-6xl font-sans font-black leading-tight mb-8 text-white">
             The Standard for Commercial Kitchen Cleaning
           </h2>
@@ -135,9 +135,11 @@ export default function WhyTRC() {
               variants={itemVariants}
               className="group"
             >
-              {/* Number badge - HIGH CONTRAST copper on black */}
+              {/* Number badge - BRIGHT COPPER on BLACK */}
               <div className="mb-8 h-20">
-                <span className="text-7xl font-black text-copper-400 tabular-nums drop-shadow-lg">
+                <span className="text-8xl font-black text-copper-500 tabular-nums" style={{
+                  textShadow: '0 0 30px rgba(217, 119, 6, 0.5), 0 0 60px rgba(217, 119, 6, 0.3)'
+                }}>
                   {reason.number}
                 </span>
               </div>
@@ -164,7 +166,7 @@ export default function WhyTRC() {
           viewport={{ once: true }}
           className="border-t border-gray-800 pt-24"
         >
-          <p className="text-copper-400 font-sans text-sm uppercase tracking-widest font-bold mb-12">By The Numbers</p>
+          <p className="text-copper-500 font-sans text-sm uppercase tracking-widest font-bold mb-12">By The Numbers</p>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -181,7 +183,9 @@ export default function WhyTRC() {
                 viewport={{ once: true, margin: "-50px" }}
                 className="text-center group"
               >
-                <div className="text-6xl sm:text-7xl font-black text-copper-400 mb-3 group-hover:text-copper-300 transition-colors tabular-nums drop-shadow-lg">
+                <div className="text-7xl sm:text-8xl font-black text-copper-500 mb-3 group-hover:text-copper-400 transition-colors tabular-nums" style={{
+                  textShadow: '0 0 30px rgba(217, 119, 6, 0.5), 0 0 60px rgba(217, 119, 6, 0.3)'
+                }}>
                   <AnimatedNumber value={stat.value} duration={2.5} />
                   {stat.label.includes('Hour') ? '/7' : stat.label.includes('Years') ? '+' : '%'}
                 </div>
