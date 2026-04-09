@@ -9,14 +9,14 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
       },
     },
   }
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
@@ -28,79 +28,111 @@ export default function Hero() {
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-navy-900 via-navy-800 to-navy-950 text-white relative overflow-hidden pt-20 flex items-center">
-      {/* Subtle background accent */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 right-20 w-96 h-96 bg-copper-600 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-20 w-96 h-96 bg-copper-600 rounded-full blur-3xl" />
-      </div>
-
+    <section className="min-h-screen bg-black text-white relative overflow-hidden flex items-center">
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center"
-        >
-          {/* Overline */}
-          <motion.div variants={itemVariants} className="mb-6">
-            <span className="text-copper-500 font-sans text-sm uppercase tracking-widest font-semibold">
-              Professional Cleaning Excellence
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold mb-8 leading-tight text-white"
-          >
-            Chris
-          </motion.h1>
-
-          {/* Subheading */}
-          <motion.p
-            variants={itemVariants}
-            className="text-lg sm:text-xl text-slate-200 max-w-3xl mx-auto mb-12 font-light leading-relaxed"
-          >
-            Trusted by Pizza Hut, Dominos, and Papa Johns. We keep your conveyor ovens pristine, compliant, and fire-safe. Commercial kitchen cleaning that transforms your operation.
-          </motion.p>
-
-          {/* CTA Buttons */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left: Text */}
           <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-copper-600 text-white font-sans font-bold text-lg rounded-lg hover:bg-copper-500 transition-colors duration-300 shadow-2xl"
+            {/* Overline */}
+            <motion.div variants={itemVariants} className="mb-6">
+              <span className="text-orange-500 font-sans text-sm uppercase tracking-widest font-bold">
+                Commercial Kitchen Experts
+              </span>
+            </motion.div>
+
+            {/* Main Headline - LARGE & BOLD */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-6xl sm:text-7xl lg:text-8xl font-sans font-black mb-8 leading-tight tracking-tight"
             >
-              Schedule Free Inspection
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 border-2 border-copper-500 text-copper-400 font-sans font-bold text-lg rounded-lg hover:bg-copper-600 hover:text-white transition-all duration-300"
+              RELIABLE{' '}
+              <span className="text-orange-500">CONVEYOR OVEN</span>
+              <br />
+              SERVICES
+            </motion.h1>
+
+            {/* Benefit-driven copy */}
+            <motion.p
+              variants={itemVariants}
+              className="text-lg sm:text-xl text-gray-300 max-w-lg mb-12 leading-relaxed font-light"
             >
-              Get a Quote
-            </motion.button>
+              The Total Restaurant Care team has a proven and effective solution for cleaning commercial conveyor ovens. Our certified technicians adhere to an in-depth process to help ensure your conveyor oven is properly cleaned and operating at its full potential.
+            </motion.p>
+
+            {/* Key benefits - bullet style */}
+            <motion.div variants={itemVariants} className="space-y-4 mb-12">
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-orange-500 mt-3 flex-shrink-0" />
+                <p className="text-gray-300">Fire hazard prevention through deep cleaning</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-orange-500 mt-3 flex-shrink-0" />
+                <p className="text-gray-300">Regulatory compliance and health code adherence</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-orange-500 mt-3 flex-shrink-0" />
+                <p className="text-gray-300">Minimal downtime—same-day service options</p>
+              </div>
+            </motion.div>
+
+            {/* CTA - AGGRESSIVE */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-6"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-5 bg-orange-600 text-white font-sans font-bold text-lg rounded-lg hover:bg-orange-500 transition-colors duration-300 shadow-2xl"
+              >
+                Schedule Inspection
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-5 border-2 border-orange-600 text-orange-600 font-sans font-bold text-lg rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-300"
+              >
+                (410) 555-1234
+              </motion.button>
+            </motion.div>
           </motion.div>
 
-          {/* Trust line */}
-          <motion.div variants={itemVariants} className="pt-12 border-t border-slate-600">
-            <p className="text-slate-300 text-sm uppercase tracking-widest font-sans mb-6">
-              Trusted by leading restaurant chains
-            </p>
-            <div className="flex justify-center items-center gap-6 flex-wrap">
-              <span className="text-copper-500 font-bold text-lg font-serif">Pizza Hut</span>
-              <div className="w-1 h-6 bg-slate-600" />
-              <span className="text-slate-300 font-sans">Bonded & Insured</span>
-              <div className="w-1 h-6 bg-slate-600" />
-              <span className="text-slate-300 font-sans">25+ Years Experience</span>
+          {/* Right: Image placeholder (for real image) */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="hidden lg:block"
+          >
+            <div className="relative w-full aspect-square bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg overflow-hidden border-2 border-orange-600 border-opacity-30">
+              {/* Placeholder for real image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">🔧</div>
+                  <p className="text-gray-400 text-lg">Conveyor Oven Cleaning</p>
+                  <p className="text-gray-500 text-sm mt-2">[Real Image Here]</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Trust badges below image */}
+            <div className="mt-12 space-y-6">
+              <div className="border-l-4 border-orange-600 pl-6">
+                <p className="text-sm text-gray-400 uppercase tracking-widest">Trusted by</p>
+                <p className="text-2xl font-bold text-white mt-2">Pizza Hut • Dominos • Papa Johns</p>
+              </div>
+              <div className="border-l-4 border-orange-600 pl-6">
+                <p className="text-sm text-gray-400 uppercase tracking-widest">Certified & Bonded</p>
+                <p className="text-2xl font-bold text-white mt-2">25+ Years Experience</p>
+              </div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
@@ -109,7 +141,7 @@ export default function Hero() {
         transition={{ duration: 3, repeat: Infinity }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
       >
-        <div className="text-copper-500 text-center">
+        <div className="text-orange-500 text-center">
           <div className="text-xs font-sans mb-3">Scroll to explore</div>
           <svg className="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
